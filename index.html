@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="todo-container">
+            <div class="popup">
+                <form id="form-update">
+                    <input type="text">
+                    <div class="btn-group">
+                         <button id="update-btn">Update</button>
+                         <button id="cancel-btn">Cancel</button>
+                    </div>
+                   
+                </form>
+            </div>
+            <div class="todo-header">
+                <div class="wrapper">
+                    <div class="heading-container">
+                        <img src="" alt="">
+                        <div class="texts">
+                            <h1>My Todo</h1>
+                            <p>Small steps. Big progress.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todo-body">
+                <div class="wrapper">
+                    <div class="add-task-container">
+                        <form id="form">
+                            <input type="text" placeholder="What needs to be done?">
+                            <button id="add-btn">Add</button>
+                        </form>
+                    </div>
+                        <div class="tasks-container">
+                            <div class="filter">
+                                <div class="btn-group">
+                                    <button class="all-tasks-btn filter-btn">All</button>
+                                    <button class="active-tasks-btn filter-btn">Active</button>
+                                    <button class="completed-tasks-btn filter-btn">Completed</button>
+                                </div>
+                                <span class="tasks-count">0 item</span>
+                            </div>
+                           <ul class="tasks"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
