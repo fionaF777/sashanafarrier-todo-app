@@ -190,7 +190,49 @@ input [type="radio"] {
 .delete-btn:hover {
     opacity: 0.5;
 }
-    
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none; 
+}
+
+
+.no-due-date-msg.show input[type="date"] {
+   color: transparent;
+   width: 20px;
+}
+
+.no-due-date-msg.show input[type="date"]::-webkit-calendar-picker-indicator {
+    display: block;
+    filter: invert(35%);
+    cursor: pointer;
+}
+
+
+.date-wrapper {
+    padding-block: .8rem 0px .8rem;
+     /* border: 1px solid red !important; */
+} 
+
+.date-wrapper,
+.date-wrapper * {
+    cursor: pointer;
+}
+
+.date-wrapper label,
+.fa-regular.fa-calendar-days,
+.no-due-date-msg {
+    color: #acaaaa;
+}
+
+.date-wrapper label,
+.fa-regular.fa-calendar-days {
+    font-size: .7rem;
+}
+
+
+.no-due-date-msg {
+    padding-block: .5rem;
+}
 
 .completed-state .task-name {
     text-decoration: line-through;
