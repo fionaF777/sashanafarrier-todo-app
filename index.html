@@ -4,21 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
         <div class="todo-container">
-            <div class="popup">
-                <form id="form-update">
-                    <input type="text">
-                    <div class="btn-group">
-                         <button id="update-btn">Update</button>
-                         <button id="cancel-btn">Cancel</button>
-                    </div>
-                   
-                </form>
-            </div>
             <div class="todo-header">
                 <div class="wrapper">
                     <div class="heading-container">
@@ -35,7 +26,10 @@
                     <div class="add-task-container">
                         <form id="form">
                             <input type="text" placeholder="What needs to be done?">
-                            <button id="add-btn">Add</button>
+                            <button id="add-btn">
+                                <i class="fa-solid fa-plus"></i>
+                                Add
+                            </button>
                         </form>
                     </div>
                         <div class="tasks-container">
@@ -51,6 +45,17 @@
                         </div>
                     </div>
                 </div>
+
+                 <div class="popup">
+                <form id="form-update">
+                    <input type="text">
+                    <div class="btn-group">
+                         <button id="update-btn">Update</button>
+                         <button id="cancel-btn">Cancel</button>
+                    </div>
+                   
+                </form>
+            </div>
             </div>
         </div>
     </main>
