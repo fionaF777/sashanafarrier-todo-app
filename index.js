@@ -29,7 +29,7 @@ function createNewTask() {
         // console.log(taskInputEl.value, date);
         tasks.push({
             task: taskInputEl.value,
-            date: date.toLocaleDateString(),
+            dueDate: "",
             state: 'active',
             id: tasksIDCounter,
         });
@@ -75,6 +75,33 @@ function displayTasksHTML() {
                                 ${item.state == "completed" ? "disabled" : ""}>
                             <div class="task-info">
                                 <p class="task-name">${item.task}</p>
+                                <div id="date-wrapper-${item.id}" class="date-wrapper">
+                                    ${!item.dueDate || item.dueDate === "No due date"
+    ? `
+        <div class="no-due-date-msg show">
+            <input class="due-date" type="date" />
+            No due date
+        </div>
+    `
+    : `
+        <button class="due-date-btn">
+            <i class="fa-regular fa-calendar-days"></i>
+        </button>
+
+        <label for="due-date-${item.id}">Due Date:</label>
+
+        <div class="input-wrapper">
+            <input 
+                id="due-date-${item.id}"
+                name="${item.name}" 
+                class="due-date" 
+                type="date"
+                value="${item.dueDate.replaceAll("/", "-")}"
+            />
+        </div>
+    `
+}
+                                </div>
                             </div>
                         </div>
                         <div class="btn-group">
@@ -249,4 +276,91 @@ document.querySelector('.filter').addEventListener("click", (e) => {
 });
 
 
+//onst dateWrapper = document.querySelector(".date-wrapper");
+// const dateInput = document.querySelector(".due-date");
+
+//const dueDateBtn = document.querySelector(".due-date-btn");
+// let dateinput;
+// tasksEl.addEventListener("click", (e) => {
+//     if(e.target.closest(".date-wrapper") || e.target.classList.contains("no-due-date-msg")) {
+//         const dateWrapperFullIdName = e.target.closest(".date-wrapper").id;
+//         const dateWrapperIdNum = dateWrapperFullIdName.slice(-1);
+
+       
+//         const dateInput = e.target.closest(".task").querySelector(".due-date")
+//         console.log(dateInput)
+        
+//         const task = tasks.find(item => item.id == dateWrapperIdNum);
+//         // document.querySelector(".task").getAttribute("id")
+//         // console.log(task)
+//         dateInput.showPicker();
+
+//         dateInput.addEventListener("change", (e) => {
+//             const selectedDate = new Date(e.target.value);
+//             const month = selectedDate.getUTCMonth() + 1;
+//             const day = selectedDate.getUTCDate();
+//             const year = selectedDate.getUTCFullYear();
+//             // console.log(month, day, year)
+
+//           console.log("Before:", task);
+//            task.dueDate = `${year}/${String(month).padStart(2, "0")}/${String(day).padStart(2, "0")}`;
+
+//             saveTasks();
+//             // displayTasksHTML();
+
+//             console.log(tasks)
+        
+//              displayTasksHTML();
+
+// console.log("After:", task);
+// console.log(tasks)
+//         })
+//     }
+
+// })
+
+
+tasksEl.addEventListener("click", (e) => {
+    const dateWrapper = e.target.closest(".date-wrapper");
+
+    if (!dateWrapper) return;
+
+    const dateWrapperIdNum = dateWrapper.id.replace("date-wrapper-", "");
+
+    const dateInput = dateWrapper.querySelector(".due-date");
+
+    const task = tasks.find(item => item.id == dateWrapperIdNum);
+
+    if (!task) {
+        console.log("Task not found:", dateWrapperIdNum);
+        return;
+    }
+
+    dateInput.showPicker();
+});
+
+
+tasksEl.addEventListener("change", (e) => {
+    if (!e.target.classList.contains("due-date")) return;
+
+    const taskEl = e.target.closest(".task");
+    const dateWrapper = e.target.closest(".date-wrapper");
+
+    const taskId = dateWrapper.id.replace("date-wrapper-", "");
+
+    const task = tasks.find(item => item.id == taskId);
+
+    if (!task) {
+        console.log("Task not found:", taskId);
+        return;
+    }
+
+    console.log(e.target.value)
+
+    task.dueDate = e.target.value;
+
+    saveTasks();
+    displayTasksHTML();
+
+});
 
