@@ -62,7 +62,7 @@ function displayTasksHTML() {
     let html = '';
     let todos = getVisibleTasks();
 
-     tasksCount.textContent = `${todos.length} ${todos.length > 0 ? "items" : "item"}`;
+     tasksCount.textContent = `${todos.length} ${todos.length > 1 ? "items" : "item"}`;
 
     if(todos.length > 0) {
         todos.forEach((item, i) => {
